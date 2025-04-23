@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão de Raciocínio Lógico - Polícia Federal (CEBRASPE)</title>
+    <style>
+        :root {
+            --primary: #b71c1c;
+            --primary-light: #f8d7da;
+            --primary-dark: #7f0000;
+            --secondary: #455a64;
+            --light: #f5f5f5;
+            --dark: #263238;
+            --accent: #ffcdd2;
+            --success: #c8e6c9;
+            --info: #bbdefb;
+            --warning: #fff9c4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 8px;
+            margin-top: 40px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-dark);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin-top: 25px;
+            font-size: 1.4rem;
+        }
+        
+        .concept-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .method-box {
+            background-color: var(--primary-light);
+            border-left: 5px solid var(--primary);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .example-box {
+            background-color: var(--info);
+            border-left: 5px solid #1565c0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .important-note {
+            background-color: var(--warning);
+            border-left: 5px solid #fbc02d;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .step-container {
+            margin: 30px 0;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-grow: 1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            text-align: left;
+            padding: 12px;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .formula {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            display: inline-block;
+            margin: 5px 0;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .topic-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .topic-title {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .flow-diagram {
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flow-node {
+            background-color: white;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            position: relative;
+            display: inline-block;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .arrow {
+            color: var(--primary);
+            font-size: 24px;
+            margin: 0 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .tip-box {
+            background-color: var(--success);
+            border-left: 5px solid #388e3c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>REVISÃO DE RACIOCÍNIO LÓGICO</h1>
+            <p>Polícia Federal - Banca CEBRASPE</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="concept-box">
+            <h2>Introdução ao Raciocínio Lógico na Prova da PF</h2>
+            <p>A prova de Raciocínio Lógico da Polícia Federal pela banca CEBRASPE exige domínio de conceitos fundamentais de lógica proposicional, argumentativa e matemática. Este material apresenta os principais tópicos cobrados nas provas anteriores, com foco nos conceitos essenciais para resolução das questões.</p>
+            
+            <div class="important-note">
+                <strong>ATENÇÃO:</strong> Lembre-se que a banca CEBRASPE utiliza o modelo de prova com itens para julgamento (C ou E), onde questões erradas anulam questões certas. Uma análise cuidadosa de cada afirmação é fundamental!
+            </div>
+        </div>
+        
+        <div class="topics-grid">
+            <div class="topic-card">
+                <h3 class="topic-title">Lógica Proposicional</h3>
+                <ul>
+                    <li>Proposições simples e compostas</li>
+                    <li>Conectivos lógicos</li>
+                    <li>Tabelas-verdade</li>
+                    <li>Equivalências lógicas</li>
+                </ul>
+            </div>
+            
+            <div class="topic-card">
+                <h3 class="topic-title">Lógica de Argumentação</h3>
+                <ul>
+                    <li>Estrutura lógica de relações arbitrárias</li>
+                    <li>Diagramas lógicos</li>
+                    <li>Análise de argumentos</li>
+                    <li>Validade e falácias</li>
+                </ul>
+            </div>
+            
+            <div class="topic-card">
+                <h3 class="topic-title">Lógica Matemática</h3>
+                <ul>
+                    <li>Sequências e séries</li>
+                    <li>Problemas de raciocínio</li>
+                    <li>Padrões numéricos</li>
+                    <li>Proporções e porcentagens</li>
+                </ul>
+            </div>
+            
+            <div class="topic-card">
+                <h3 class="topic-title">Análise Combinatória</h3>
+                <ul>
+                    <li>Princípio fundamental da contagem</li>
+                    <li>Arranjos e permutações</li>
+                    <li>Combinações</li>
+                    <li>Problemas de contagem</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>1. Lógica Proposicional</h2>
+        
+        <div class="concept-box">
+            <h3>Proposições e Valores Lógicos</h3>
+            <p>Uma <span class="highlight">proposição</span> é toda sentença declarativa que pode ser classificada como verdadeira (V) ou falsa (F), de forma inequívoca. Sentenças interrogativas, exclamativas, imperativas ou que expressam contradição ou ambiguidade não são proposições.</p>
+            
+            <div class="example-box">
+                <p><strong>Exemplos de proposições:</strong></p>
+                <ul>
+                    <li>"Brasília é a capital do Brasil." (Proposição verdadeira)</li>
+                    <li>"2 + 3 = 6" (Proposição falsa)</li>
+                </ul>
+                
+                <p><strong>Exemplos de não-proposições:</strong></p>
+                <ul>
+                    <li>"Que horas são?" (Sentença interrogativa)</li>
+                    <li>"Feche a porta!" (Sentença imperativa)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Conectivos Lógicos</h3>
+            <p>Conectivos lógicos são operadores que combinam proposições simples formando proposições compostas.</p>
+            
+            <table>
+                <tr>
+                    <th>Conectivo</th>
+                    <th>Símbolo</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>Negação</td>
+                    <td>¬p</td>
+                    <td>NÃO</td>
+                    <td>Inverte o valor lógico da proposição</td>
+                </tr>
+                <tr>
+                    <td>Conjunção</td>
+                    <td>p ∧ q</td>
+                    <td>E</td>
+                    <td>Verdadeira apenas quando ambas as proposições são verdadeiras</td>
+                </tr>
+                <tr>
+                    <td>Disjunção</td>
+                    <td>p ∨ q</td>
+                    <td>OU</td>
+                    <td>Falsa apenas quando ambas as proposições são falsas</td>
+                </tr>
+                <tr>
+                    <td>Condicional</td>
+                    <td>p → q</td>
+                    <td>SE...ENTÃO</td>
+                    <td>Falsa apenas quando p é verdadeira e q é falsa</td>
+                </tr>
+                <tr>
+                    <td>Bicondicional</td>
+                    <td>p ↔ q</td>
+                    <td>SE E SOMENTE SE</td>
+                    <td>Verdadeira quando p e q têm o mesmo valor lógico</td>
+                </tr>
+            </table>
+            
+            <div class="method-box">
+                <h4>Tabela-verdade para a Condicional (p → q)</h4>
+                <p>A proposição condicional "se p então q" é particularmente importante nas provas da CEBRASPE e merece atenção especial:</p>
+                <ol>
+                    <li>É <strong>falsa</strong> apenas quando o antecedente (p) é verdadeiro e o consequente (q) é falso.</li>
+                    <li>É <strong>verdadeira</strong> em todos os outros casos, inclusive quando o antecedente é falso (independentemente do valor do consequente).</li>
+                </ol>
+                <div class="formula">
+                    p → q = ¬p ∨ q
+                </div>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h3>Equivalências Lógicas Importantes</h3>
+            <p>São fórmulas lógicas que possuem exatamente a mesma tabela-verdade, ou seja, são logicamente equivalentes.</p>
+            
+            <table>
+                <tr>
+                    <th>Equivalência</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>¬(p ∧ q) ≡ ¬p ∨ ¬q</td>
+                    <td>Lei de De Morgan para a negação da conjunção</td>
+                </tr>
+                <tr>
+                    <td>¬(p ∨ q) ≡ ¬p ∧ ¬q</td>
+                    <td>Lei de De Morgan para a negação da disjunção</td>
+                </tr>
+                <tr>
+                    <td>p → q ≡ ¬p ∨ q</td>
+                    <td>Definição alternativa do condicional</td>
+                </tr>
+                <tr>
+                    <td>¬(p → q) ≡ p ∧ ¬q</td>
+                    <td>Negação do condicional</td>
+                </tr>
+                <tr>
+                    <td>p ↔ q ≡ (p → q) ∧ (q → p)</td>
+                    <td>Definição do bicondicional usando condicionais</td>
+                </tr>
+            </table>
+            
+            <div class="tip-box">
+                <h4>Dica para a Prova!</h4>
+                <p>A CEBRASPE frequentemente apresenta questões onde é necessário negar proposições compostas. Memorize as Leis de De Morgan e a negação do condicional!</p>
+            </div>
+        </div>
+        
+        <h2>2. Lógica de Argumentação</h2>
+        
+        <div class="concept-box">
+            <h3>Estrutura de um Argumento</h3>
+            <p>Um argumento é composto por premissas e conclusão. A análise da validade de um argumento verifica se a conclusão é uma consequência lógica das premissas.</p>
+            
+            <div class="flow-diagram">
+                <div class="flow-node">Premissa 1</div>
+                <div class="arrow">+</div>
+                <div class="flow-node">Premissa 2</div>
+                <div class="arrow">+</div>
+                <div class="flow-node">Premissa n</div>
+                <div class="arrow">→</div>
+                <div class="flow-node">Conclusão</div>
+            </div>
+            
+            <div class="example-box">
+                <p><strong>Exemplo de Argumento:</strong></p>
+                <p><strong>Premissa 1:</strong> Todo policial federal é servidor público.</p>
+                <p><strong>Premissa 2:</strong> João é policial federal.</p>
+                <p><strong>Conclusão:</strong> João é servidor público.</p>
+                <p><em>Este é um argumento válido.</em></p>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Métodos de Validação de Argumentos</h3>
+            
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Método Direto</h4>
+                        <p>Verifica se a conclusão é uma consequência lógica direta das premissas usando regras de inferência.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Método da Contradição (Indireto)</h4>
+                        <p>Assume-se a negação da conclusão junto com as premissas e busca-se uma contradição. Se houver contradição, o argumento é válido.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Diagramas Lógicos</h4>
+                        <p>Utiliza representações visuais (como diagramas de Venn) para analisar a validade de argumentos, especialmente útil para silogismos categóricos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="method-box">
+                <h4>Regras de Inferência Comuns</h4>
+                <ul>
+                    <li><strong>Modus Ponens:</strong> Se p → q é verdadeiro e p é verdadeiro, então q é verdadeiro.</li>
+                    <li><strong>Modus Tollens:</strong> Se p → q é verdadeiro e q é falso, então p é falso.</li>
+                    <li><strong>Silogismo Hipotético:</strong> Se p → q e q → r são verdadeiros, então p → r é verdadeiro.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Falácias Comuns</h3>
+            <p>Falácias são erros de raciocínio que levam a conclusões inválidas. A CEBRASPE frequentemente explora esses erros em suas questões.</p>
+            
+            <table>
+                <tr>
+                    <th>Falácia</th>
+                    <th>Descrição</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td>Afirmação do Consequente</td>
+                    <td>A partir de p → q e q, concluir p</td>
+                    <td>"Se chove, a rua fica molhada. A rua está molhada, logo choveu." (Inválido, pois a rua pode estar molhada por outros motivos)</td>
+                </tr>
+                <tr>
+                    <td>Negação do Antecedente</td>
+                    <td>A partir de p → q e ¬p, concluir ¬q</td>
+                    <td>"Se o réu é culpado, deve ser punido. O réu não é culpado, logo não deve ser punido." (Inválido, pois pode haver outras razões para punição)</td>
+                </tr>
+                <tr>
+                    <td>Generalização Apressada</td>
+                    <td>Conclusão baseada em amostra insuficiente</td>
+                    <td>"Conheci três policiais corruptos, logo todos os policiais são corruptos." (Inválido)</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>3. Lógica Matemática</h2>
+        
+        <div class="concept-box">
+            <h3>Sequências e Padrões</h3>
+            <p>A identificação de padrões em sequências numéricas é um tópico frequente nas provas da CEBRASPE.</p>
+            
+            <div class="example-box">
+                <p><strong>Exemplos de Sequências:</strong></p>
+                <ul>
+                    <li><strong>Sequência Aritmética:</strong> 2, 5, 8, 11, 14, ... (razão = 3)</li>
+                    <li><strong>Sequência Geométrica:</strong> 3, 6, 12, 24, 48, ... (razão = 2)</li>
+                    <li><strong>Sequência de Fibonacci:</strong> 1, 1, 2, 3, 5, 8, 13, ... (cada termo é a soma dos dois anteriores)</li>
+                </ul>
+            </div>
+            
+            <div class="method-box">
+                <h4>Estratégia para Resolver Questões de Sequências</h4>
+                <ol>
+                    <li>Identifique o padrão calculando as diferenças entre termos consecutivos</li>
+                    <li>Se as diferenças forem constantes, é uma sequência aritmética</li>
+                    <li>Se a razão entre termos consecutivos for constante, é uma sequência geométrica</li>
+                    <li>Se não for nenhum dos casos acima, verifique padrões mais complexos (quadráticos, cúbicos, alternados, etc.)</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Problemas de Raciocínio</h3>
+            <p>Questões que envolvem raciocínio lógico para resolver situações-problema são comuns nas provas da PF.</p>
+            
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Problemas de Verdade e Mentira</h4>
+                        <p>Envolvem determinar quem está falando a verdade ou mentindo em um grupo de pessoas com base em suas declarações.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Problemas de Calendário</h4>
+                        <p>Envolvem datas, dias da semana e cálculos relacionados ao calendário.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Problemas de Balança</h4>
+                        <p>Determinar pesos ou identificar objetos diferentes usando uma balança de dois pratos com número limitado de pesagens.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="important-note">
+                <p><strong>Atenção!</strong> Nestes tipos de problemas, organize as informações em tabelas ou esquemas para visualizar melhor as possibilidades e eliminar as inconsistentes.</p>
+            </div>
+        </div>
+        
+        <h2>4. Análise Combinatória</h2>
+        
+        <div class="concept-box">
+            <h3>Princípio Fundamental da Contagem</h3>
+            <p>Se um evento pode ocorrer de m maneiras diferentes, e para cada uma dessas maneiras, um segundo evento pode ocorrer de n maneiras diferentes, então o número total de maneiras de ocorrência dos dois eventos é m × n.</p>
+            
+            <div class="example-box">
+                <p><strong>Exemplo:</strong> Se temos 5 camisas e 3 calças, o número total de combinações possíveis é 5 × 3 = 15.</p>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Arranjos e Permutações</h3>
+            
+            <table>
+                <tr>
+                    <th>Conceito</th>
+                    <th>Fórmula</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <td>Arranjo Simples</td>
+                    <td>A(n,p) = n! / (n-p)!</td>
+                    <td>Número de maneiras de selecionar e ordenar p elementos de um conjunto de n elementos</td>
+                </tr>
+                <tr>
+                    <td>Permutação Simples</td>
+                    <td>P(n) = n!</td>
+                    <td>Número de maneiras de ordenar n elementos distintos</td>
+                </tr>
+                <tr>
+                    <td>Permutação com Repetição</td>
+                    <td>P(n; n₁,n₂,...,nₖ) = n! / (n₁! × n₂! × ... × nₖ!)</td>
+                    <td>Permutação de n elementos, onde há n₁ elementos iguais do tipo 1, n₂ elementos iguais do tipo 2, etc.</td>
+                </tr>
+            </table>
+            
+            <div class="method-box">
+                <h4>Quando usar Arranjo vs. Permutação</h4>
+                <ul>
+                    <li>Use <strong>arranjo</strong> quando a ordem importa e você seleciona apenas alguns elementos do conjunto (p < n)</li>
+                    <li>Use <strong>permutação</strong> quando a ordem importa e você utiliza todos os elementos do conjunto (p = n)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Combinações</h3>
+            <p>Combinação é usada quando a ordem NÃO importa na seleção.</p>
+            
+            <div class="formula">
+                C(n,p) = n! / [p! × (n-p)!] = (n p)
+            </div>
+            
+            <div class="example-box">
+                <p><strong>Exemplo:</strong> O número de maneiras de escolher 3 pessoas em um grupo de 10 pessoas para formar uma comissão (onde a ordem não importa) é:</p>
+                <p>C(10,3) = 10! / [3! × (10-3)!] = 10! / (3! × 7!) = 120</p>
+            </div>
+            
+            <div class="tip-box">
+                <h4>Dica para a Prova!</h4>
+                <p>Para identificar se um problema envolve combinação ou arranjo, pergunte-se: "A ordem dos elementos importa?" Se a resposta for NÃO, use combinação; se for SIM, use arranjo.</p>
+            </div>
+        </div>
+        
+        <h2>5. Questões Recorrentes na Prova da PF</h2>
+        
+        <div class="concept-box">
+            <h3>Diagramas de Venn e Operações com Conjuntos</h3>
+            <p>Problemas envolvendo conjuntos aparecem com frequência nas provas da CEBRASPE, especialmente relacionados ao número de elementos em conjuntos com propriedades específicas.</p>
+            
+            <div class="method-box">
+                <h4>Fórmulas Importantes</h4>
+                <ul>
+                    <li>n(A ∪ B) = n(A) + n(B) - n(A ∩ B)</li>
+                    <li>n(A ∪ B ∪ C) = n(A) + n(B) + n(C) - n(A ∩ B) - n(A ∩ C) - n(B ∩ C) + n(A ∩ B ∩ C)</li>
+                    <li>n(A - B) = n(A) - n(A ∩ B)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Lógica Proposicional Aplicada</h3>
+            <p>A CEBRASPE frequentemente apresenta situações-problema que exigem a aplicação da lógica proposicional em contextos práticos.</p>
+            
+            <div class="example-box">
+                <p><strong>Exemplo:</strong> "Se todos os policiais são honestos e João é policial, então João é honesto." Esta afirmação é um exemplo de aplicação do Modus Ponens.</p>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Problemas Sobre Veracidade de Declarações</h3>
+            <p>Questões que envolvem determinar a veracidade de afirmações feitas por diferentes pessoas são comuns em provas da CEBRASPE.</p>
+            
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Teste todas as possibilidades</h4>
+                        <p>Para cada pessoa, considere os dois casos possíveis: ela está falando a verdade ou está mentindo.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Elimine combinações inconsistentes</h4>
+                        <p>Ao analisar as afirmações de cada pessoa, elimine as combinações que levam a contradições.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Identifique a solução única</h4>
+                        <p>A combinação restante após eliminar todas as inconsistências será a solução do problema.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <p><strong>Exemplo:</strong> Em uma investigação, três suspeitos (A, B e C) fizeram as seguintes declarações:</p>
+                <p>A: "B está mentindo."</p>
+                <p>B: "C está mentindo."</p>
+                <p>C: "A e B estão mentindo."</p>
+                <p>Construa uma tabela com todas as possibilidades (V para verdadeiro, F para falso) e elimine as inconsistentes para encontrar quem está mentindo e quem está falando a verdade.</p>
+            </div>
+        </div>
+        
+        <h2>6. Estratégias para a Prova</h2>
+        
+        <div class="concept-box">
+            <h3>Como Abordar Questões de Raciocínio Lógico na CEBRASPE</h3>
+            
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Leia com atenção o enunciado</h4>
+                        <p>Sublinhe ou destaque as informações relevantes e identifique exatamente o que está sendo perguntado.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Organize as informações</h4>
+                        <p>Use tabelas, diagramas ou esquemas para organizar as informações do problema de forma clara.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Aplique o método adequado</h4>
+                        <p>Identifique qual conceito de raciocínio lógico deve ser aplicado (lógica proposicional, análise combinatória, etc.)</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Verifique sua resposta</h4>
+                        <p>Confirme se sua solução é consistente com todas as informações fornecidas no enunciado.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="important-note">
+                <h4>Atenção ao Modelo CEBRASPE (Certo ou Errado)</h4>
+                <p>Lembre-se que na prova da CEBRASPE, questões erradas anulam questões certas. Em caso de dúvida, é melhor deixar em branco!</p>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Armadilhas Comuns da CEBRASPE</h3>
+            
+            <table>
+                <tr>
+                    <th>Tipo de Armadilha</th>
+                    <th>Como Identificar</th>
+                    <th>Como Evitar</th>
+                </tr>
+                <tr>
+                    <td>Negações Complexas</td>
+                    <td>Presença de múltiplas negações ou negações de conectivos</td>
+                    <td>Reescreva a proposição aplicando as leis de De Morgan e regras de negação</td>
+                </tr>
+                <tr>
+                    <td>Linguagem Ambígua</td>
+                    <td>Uso de termos com dupla interpretação</td>
+                    <td>Formalize a questão usando símbolos lógicos para eliminar ambiguidades</td>
+                </tr>
+                <tr>
+                    <td>Falácias Lógicas</td>
+                    <td>Argumentos que parecem corretos, mas têm estrutura inválida</td>
+                    <td>Verifique sempre a validade usando as regras de inferência corretas</td>
+                </tr>
+            </table>
+            
+            <div class="tip-box">
+                <h4>Dica para a Prova!</h4>
+                <p>A CEBRASPE costuma usar uma linguagem complexa para disfarçar questões relativamente simples. Sempre tente simplificar o problema antes de resolvê-lo.</p>
+            </div>
+        </div>
+        
+        <h2>7. Tópicos Adicionais</h2>
+        
+        <div class="concept-box">
+            <h3>Probabilidade Básica</h3>
+            <p>Embora menos frequente, questões de probabilidade podem aparecer relacionadas ao raciocínio lógico.</p>
+            
+            <div class="formula">
+                P(A) = número de casos favoráveis / número de casos possíveis
+            </div>
+            
+            <div class="method-box">
+                <h4>Propriedades Importantes</h4>
+                <ul>
+                    <li>0 ≤ P(A) ≤ 1</li>
+                    <li>P(A ∪ B) = P(A) + P(B) - P(A ∩ B)</li>
+                    <li>Se A e B são independentes, então P(A ∩ B) = P(A) × P(B)</li>
+                    <li>P(A') = 1 - P(A), onde A' é o evento complementar de A</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Teoria dos Conjuntos e Lógica</h3>
+            <p>A relação entre operações com conjuntos e conectivos lógicos é um tema recorrente.</p>
+            
+            <table>
+                <tr>
+                    <th>Operação de Conjuntos</th>
+                    <th>Operação Lógica Equivalente</th>
+                </tr>
+                <tr>
+                    <td>União (A ∪ B)</td>
+                    <td>Disjunção (p ∨ q)</td>
+                </tr>
+                <tr>
+                    <td>Interseção (A ∩ B)</td>
+                    <td>Conjunção (p ∧ q)</td>
+                </tr>
+                <tr>
+                    <td>Complemento (A')</td>
+                    <td>Negação (¬p)</td>
+                </tr>
+                <tr>
+                    <td>Diferença (A - B)</td>
+                    <td>Conjunção com negação (p ∧ ¬q)</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2>8. Exercícios Resolvidos</h2>
+        
+        <div class="concept-box">
+            <h3>Exemplo 1: Lógica Proposicional</h3>
+            <p><strong>Questão:</strong> Considere a proposição "Se João é inocente, então Maria não é culpada". A negação correta dessa proposição é:</p>
+            
+            <div class="method-box">
+                <h4>Resolução:</h4>
+                <p>A proposição tem a forma p → q, onde:</p>
+                <ul>
+                    <li>p: "João é inocente"</li>
+                    <li>q: "Maria não é culpada"</li>
+                </ul>
+                <p>A negação de p → q é p ∧ ¬q, ou seja:</p>
+                <p>"João é inocente E Maria é culpada"</p>
+                <p><strong>Resposta:</strong> "João é inocente e Maria é culpada".</p>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Exemplo 2: Análise Combinatória</h3>
+            <p><strong>Questão:</strong> Em um departamento da Polícia Federal, há 8 agentes. De quantas maneiras diferentes é possível escolher 3 desses agentes para formar uma equipe de investigação, considerando que a ordem de escolha não importa?</p>
+            
+            <div class="method-box">
+                <h4>Resolução:</h4>
+                <p>Como a ordem não importa, trata-se de um problema de combinação. Devemos calcular C(8,3):</p>
+                <div class="formula">
+                    C(8,3) = 8! / [3! × (8-3)!] = 8! / (3! × 5!) = 56
+                </div>
+                <p><strong>Resposta:</strong> É possível formar 56 equipes diferentes.</p>
+            </div>
+        </div>
+        
+        <div class="concept-box">
+            <h3>Exemplo 3: Problemas de Verdade e Mentira</h3>
+            <p><strong>Questão:</strong> Cinco suspeitos (A, B, C, D e E) foram interrogados sobre um crime. Sabe-se que apenas um deles está mentindo e que:</p>
+            <ul>
+                <li>A afirmou: "B é o criminoso."</li>
+                <li>B afirmou: "C é o criminoso."</li>
+                <li>C afirmou: "D é o criminoso."</li>
+                <li>D afirmou: "E é o criminoso."</li>
+                <li>E afirmou: "A é o criminoso."</li>
+            </ul>
+            <p>Quem é o criminoso?</p>
+            
+            <div class="method-box">
+                <h4>Resolução:</h4>
+                <p>Se apenas um está mentindo, então quatro estão falando a verdade. Se A estiver falando a verdade, B é o criminoso. Nesse caso, B estaria mentindo ao acusar C, o que é coerente. Mas se B é o criminoso, então C, D e E teriam que estar mentindo, o que contradiz o fato de que apenas um está mentindo.</p>
+                <p>Fazendo a mesma análise para cada suspeito, verificamos que apenas quando C está mentindo, temos uma situação coerente. Nesse caso, D não é o criminoso (contradizendo a afirmação de C), e E é o criminoso (conforme afirmado por D).</p>
+                <p><strong>Resposta:</strong> E é o criminoso e C é quem está mentindo.</p>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h3>Exemplo 4: Diagramas Lógicos</h3>
+            <p><strong>Questão:</strong> Em uma investigação sobre um esquema de corrupção, verificou-se que, de 120 pessoas investigadas, 70 cometeram o crime A, 55 cometeram o crime B e 40 cometeram o crime C. Além disso, 30 pessoas cometeram os crimes A e B, 22 cometeram os crimes A e C, 25 cometeram os crimes B e C, e 15 cometeram os três crimes. Quantas pessoas não cometeram nenhum dos três crimes?</p>
+            
+            <div class="method-box">
+                <h4>Resolução:</h4>
+                <p>Vamos usar a fórmula para união de três conjuntos:</p>
+                <div class="formula">
+                    n(A ∪ B ∪ C) = n(A) + n(B) + n(C) - n(A ∩ B) - n(A ∩ C) - n(B ∩ C) + n(A ∩ B ∩ C)
+                </div>
+                <p>Substituindo os valores:</p>
+                <p>n(A ∪ B ∪ C) = 70 + 55 + 40 - 30 - 22 - 25 + 15 = 103</p>
+                <p>Portanto, 103 pessoas cometeram pelo menos um dos crimes. Como o total é 120, temos:</p>
+                <p>120 - 103 = 17 pessoas que não cometeram nenhum dos crimes.</p>
+                <p><strong>Resposta:</strong> 17 pessoas não cometeram nenhum dos três crimes.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Material de Revisão para Concursos da Polícia Federal</p>
+            <p>Raciocínio Lógico - Banca CEBRASPE</p>
+        </footer>
+    </div>
+</body>
+</html>
